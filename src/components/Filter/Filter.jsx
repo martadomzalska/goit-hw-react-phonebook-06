@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux';
 import { filterContacts } from 'redux/actions';
 import css from './Filter.module.css';
 
-export const Filter = ({ value, onChange }) => {
+export const Filter = () => {
   const dispatch = useDispatch();
 
   const handleChange = e => {
