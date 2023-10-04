@@ -1,4 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 import { addContact } from '../../redux/actions';
 import css from './Form.module.css';
 
@@ -6,6 +7,14 @@ export const ContactForm = () => {
   const contacts = useSelector(state => state.contacts);
 
   const dispatch = useDispatch();
+
+    useEffect(() => {
+      if (contacts.length === 0) {
+        localStorage.removeItem('contacts');
+      } else {
+        localStorage.setItem('contacts', JSON.stringify(contacts));
+      }
+    }, [contacts]);
 
   const handleSubmit = event => {
     event.preventDefault();
