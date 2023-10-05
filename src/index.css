@@ -24,7 +24,8 @@ body {
   );
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
-  height: 100vh;
+
+  /* height: 100vh; */
 }
 @keyframes gradient {
   0% {
@@ -37,10 +38,7 @@ body {
     background-position: 0% 50%;
   }
 }
-.container {
-  position: sticky;
-  top: 0px;
-}
+
 h1 {
   font-family: 'Prata', serif;
   font-size: 70px;
@@ -64,3 +62,16 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.container {
+ width: 440px;
+}
+
+.loading,
+.error {
+height: 100vh;
+display: flex;
+justify-content: center;
+margin-top: 100px;
+}
+

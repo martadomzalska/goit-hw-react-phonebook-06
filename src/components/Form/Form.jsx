@@ -1,32 +1,27 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { useEffect } from 'react';
-import { addContact } from '../../redux/actions';
+import { addContact } from 'redux/operations';
 import css from './Form.module.css';
 
 export const ContactForm = () => {
-  const contacts = useSelector(state => state.contacts);
+  const contacts = useSelector(state => state.contacts.items);
 
   const dispatch = useDispatch();
-
-    useEffect(() => {
-      if (contacts.length === 0) {
-        localStorage.removeItem('contacts');
-      } else {
-        localStorage.setItem('contacts', JSON.stringify(contacts));
-      }
-    }, [contacts]);
 
   const handleSubmit = event => {
     event.preventDefault();
     const form = event.target;
     const name = form.elements.name.value;
     const number = form.elements.number.value;
+    const newNumber = {
+      name: name,
+      phone: number,
+    };
     const existingContact = contacts.find(contact => contact.name === name);
 
     if (existingContact) {
       alert(`${existingContact.name} is already in contacts`);
     } else {
-      dispatch(addContact(name, number));
+      dispatch(addContact(newNumber));
     }
 
     form.reset();
